@@ -1,0 +1,14 @@
+environment: production
+chdir: /var/www/ua_cy
+address: 127.0.0.1
+user: ben
+group: ben
+port: 4567
+pid: /var/www/ua_cy/thin.pid
+rackup: /var/www/ua_cy/config.ru
+log: /var/www/ua_cy/thin.log
+max_conns: 1024
+timeout: 30
+max_persistent_conns: 512
+daemonize: true
+
