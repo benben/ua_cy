@@ -1,3 +1,3 @@
-require 'ua'
-run Sinatra::Application
+require 'lib/ua.rb'
+run Ua
 
