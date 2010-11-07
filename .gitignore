@@ -2,3 +2,7 @@ thin.log
 config.yml
 .project
 auth.yml
+thin.pid
+database.log
+db.sqlite
+

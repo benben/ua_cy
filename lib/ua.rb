@@ -5,6 +5,8 @@ require 'sinatra'
 require 'koala'
 require 'yaml'
 
+require 'lib/env'
+
 class Ua < Sinatra::Application
 
 	include Koala  
@@ -18,12 +20,14 @@ class Ua < Sinatra::Application
 			set :app_id, c["app_id"]
 			set :app_code, c["app_code"]
 			set :site_url, (c["site_url"] + 'callback')
-			set :twitter_user, c["twitter_user"]
-			set :twitter_pass, c["twitter_pass"]
 		rescue Exception => e
 			puts e
 		end
 	end
+  
+  helpers do
+
+  end
 
 	get '/' do
 		if session['access_token']
@@ -58,6 +62,5 @@ class Ua < Sinatra::Application
 		session['access_token'] = session['oauth'].get_access_token(params[:code])
 		redirect '/'
 	end
-
 end
 
