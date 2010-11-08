@@ -9,7 +9,7 @@ class Ua < Sinatra::Application
 
 	include Koala  
 
-	set :root, APP_ROOT  
+	set :root, APP_ROOT
 	enable :sessions
 
 	configure do
@@ -42,8 +42,7 @@ class Ua < Sinatra::Application
 	end
 
   get '/update' do
-    @messages = Message.where(["id > ?", params[:last_id]])
-    puts @messages.inspect
+    @messages = Message.where(["id > ?", params[:last_id]]).order("id DESC")
     erb :_messages, :layout => false, :locals => {:messages => @messages}
   end
 
@@ -64,6 +63,12 @@ class Ua < Sinatra::Application
 		#get the access token from facebook
 		session['access_token'] = session['oauth'].get_access_token(params[:code])
 		redirect '/'
+	end
+	
+	def urlconv (status)
+    s = status.gsub( Regexp.new('((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'), '<a href="\1">\1</a>' )    
+    s = s.gsub( Regexp.new('(@([_a-zA-Z0-9\-]+))'), '<a href="http://twitter.com/\2" title="\2 on Twitter">\1</a>' )
+    s = s.gsub( Regexp.new('(#([_a-zA-Z0-9\-]+))'), '<a href="http://search.twitter.com/search?q=%23\2" title="Search for \1 on Twitter">\1</a>' )
 	end
 end
 

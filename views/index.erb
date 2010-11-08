@@ -5,28 +5,94 @@
       <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
       <script type="text/javascript" src="prototype.js"></script>
       <script type="text/javascript" src="stream.js"></script>
+      <link href="main.css" media="screen" rel="stylesheet" type="text/css" />
+      <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin' rel='stylesheet' type='text/css'>
   </head> 
   <body>
-    <video 
-    src="http://85.25.67.150:8090/test.flv"
-    height="288"
-    id="container"
-    width="512"> 
-    </video> 
-    <script type="text/javascript"> 
-      jwplayer("container").setup({
-        autostart: false,
-        height: 288,
-        width: 512,
-        players: [
-          { type: "flash", src: "/jwplayer/player.swf" },
-          { type: "html5" }
-        ],
-        streamer:'http://85.25.67.150:8090/test.flv'
-      });
-    </script>
-    <div id="messages" style="border:1px dotted black;">
-      <%= erb :_messages, :layout => false, :locals => {:messages => @messages} %>
+    <div id="page">
+      <img style="margin:10px;" src="head.png" alt="utopiaattraktor.org"/>
+      <div id="right">
+        <video 
+        src="http://85.25.67.150:8090/test.flv"
+        height="288"
+        poster="stream.png"
+        id="container"
+        width="512"> 
+        </video> 
+        <script type="text/javascript"> 
+          jwplayer("container").setup({
+            autostart: false,
+            height: 288,
+            width: 512,
+            players: [
+              { type: "flash", src: "/jwplayer/player.swf" },
+              { type: "html5" }
+            ],
+            streamer:'http://85.25.67.150:8090/test.flv'
+          });
+        </script>
+        <h1>1. Post here</h1>
+        <form>
+          <textarea style="border:1px solid white;background-color:black;width:100%;height:100px;color:#ff9900;"></textarea>
+          <input style="border:0px;background-color:#ff9900;width:100px;height:30px;font-family: 'Droid Sans Mono', sans-serif;font-weight:bold;" type="submit" value="Senden" name="submit" />
+        </form>
+        <h1>2. Twitter</h1>
+        <p>Twitter with #ua2011 or @utopiaattraktor</p>
+        <h1>3. Facebook</h1>
+        <p>Post to the Utopia Attraktor Site</p>
+        <h1>Info</h1>
+        <p>Im Frühjahr 2011 startet
+           UTOPIA ATTRAKTOR<br/>
+           - ein städte- und länderübergreifendes Netzwerk- und Kommunikationsformat -<br /><br />
+           Weimar ** Dresden ** Halle/Saale ** Leipzig<br /><br />
+          Mischt Euch ein!<br />
+          Führt Utopisches zusammen!<br />
+          Arbeitet gemeinsam!<br />
+          Vernetzt Euch!<br /><br />
+          Vorkongress ** Ausstellungen ** Workshops<br />
+          SIMULATOREN Summer School ** Hauptkongress<br /><br />
+          Gibt es Neuigkeiten, Fantastische Ideen, Visionen und vermeintliche Utopien
+          in unserer zunehmend differenzierten Welt, die es wert sind verkündet zu werden?<br /><br />
+          Welchen Einfluss haben sich neu entfaltende Perspektiven und Zukunftsszenarien
+          auf unser Denken heute?<br />
+          Reicht es aus den Blick nach vorn zu richten und darauf zu drängen, dass wir
+          durch positives Denken neue Wege finden, um die alten Probleme zu lösen?<br />
+          Wir setzen es uns zum Ziel, das Zusammenspiel zwischen globalem Denken und
+          lokalem Handeln neu zu denken. Wir weichen ab von der Behauptung Buckminster
+          Fullers, der mit seinem Ausspruch „think global, act local“ wegweisend war,
+          hin zu einer Kultur des gleichzeitigen globalen und lokalen Denkens und Handelns.<br />
+          Nicht-lineare nicht-hierarchische Ideen von Gesellschaft, kulturelle
+          Strategien für soziale Integration und Partizipation.<br />
+          Neben der Präsentation von Projekten und Netzwerken werden wir über technische
+          Innovationen und gesellschaftliche Neuentdeckungen sprechen, Prototypen
+          vorstellen und Konzepte diskutieren, die Euer persönliches Handeln
+          herausfordern.<br />
+          Dabei habt Ihr die Möglichkeit, euch in Form von „Anteilsscheinen“ an der
+          Entwicklung und Realisierung von Produkten, Projekten oder Modellen zu
+          beteiligen. Wir bieten Euch aber auch Raum für die Präsentation eigener
+          Ideen und Projekte. Die Ausstellungen erweitern sich ständig und wandern
+          zwischen den Partnern.<br />
+          Parallel dazu bieten wir Euch die SIMULATOREN Summer School, mit
+          Workshopangeboten zu konkreten Utopien und Projekten, welche besonders
+          für Kinder und Jugendliche interessant sind.<br />
+          Zu den thematischen Gesprächsformaten laden wir Vertreter aus Kunst,
+          Wissenschaft, Stiftungen, Wirtschaft und NGOs ein. In jeder Partnerstadt
+          wird das Konzept um Interessierte, Künstlern, Wissenschaftlern, Erfindern
+          und NGOs aus den jeweiligen Regionen erweitert.<br />
+          Wir werden viral über das Internet Informationen und „Utopien“ verbreiten
+          und zur Diskussion anstiften.<br />
+          Über unsere Internetplattform könnt Ihr Euch ganz offiziell über utopische
+          Projekte, Konzepte und Ideen informieren und selber präsentieren.<br /><br />
+          Wenn Ihr Interesse habt als Einzelperson oder Gruppe teilzunehmen, dann
+          meldet Euch bitte hiermit an.<br /><br />
+          www.utopiaattraktor.org<br />
+          www.facebook.com/utopiaattraktor</p>
+      </div>
+      <div id="left">
+        <div id="messages" style="border:1px dotted black;">
+          <%= erb :_messages, :layout => false, :locals => {:messages => @messages} %>
+        </div>
+      </div>
     </div>
   </body> 
 </html> 

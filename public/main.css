@@ -1,0 +1,38 @@
+* {
+margin: 0px;
+padding: 0px;
+border:0px;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-family: 'Droid Sans Mono', sans-serif;
+}
+
+h1 {
+  color: #ff9900;
+  margin:20px 0px 10px 0px;
+}
+
+a {
+  color: #ff9900;
+}
+
+#page {
+  width:960px;
+  min-width:960px;
+}
+
+#right {
+  float: left;
+  width:512px;
+  margin: 10px;
+}
+
+#left {
+  width:410px;
+  float:left;
+  margin:10px 10px 10px 0px;
+}

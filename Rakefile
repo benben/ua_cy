@@ -6,7 +6,7 @@ task :dbcreate do
         t.integer :id
         t.string :message_id
         t.integer :time
-        t.string :text
+        t.text :text
         t.string :user_id
         t.string :user_name
         t.string :via

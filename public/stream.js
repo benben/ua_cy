@@ -1,5 +1,4 @@
 document.observe('dom:loaded', function() {
-
   var pu = new Ajax.PeriodicalUpdater('messages', '/update', {
     frequency: 2,
     method: 'get',
@@ -8,7 +7,6 @@ document.observe('dom:loaded', function() {
   });
   
   $('messages').observe('DOMNodeInserted', function(event) {
-    
     pu.options.parameters = { last_id: $('messages').firstDescendant().identify() };
     var message_count = $('messages').childElements().size();
     
