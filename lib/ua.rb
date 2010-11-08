@@ -1,10 +1,5 @@
 require 'lib/env'
 
-require 'rubygems'
-require 'sinatra'
-require 'koala'
-require 'yaml'
-
 class Ua < Sinatra::Application
 
 	include Koala  
