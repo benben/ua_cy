@@ -1,11 +1,9 @@
-APP_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+require 'lib/env'
 
 require 'rubygems'
 require 'sinatra'
 require 'koala'
 require 'yaml'
-
-require 'lib/env'
 
 class Ua < Sinatra::Application
 
@@ -31,7 +29,6 @@ class Ua < Sinatra::Application
 
 	get '/' do
 		if session['access_token']
-		  'You are logged in! <a href="/logout">Logout</a>'
 			# do some stuff with facebook here
 			# for example:
 			# @graph = Koala::Facebook::GraphAPI.new(session["access_token"])
@@ -39,10 +36,16 @@ class Ua < Sinatra::Application
 			# @graph.put_wall_post("I'm posting from my new cool app!")
 			# or publish to someone else (if you have the permissions too ;) )
 			# @graph.put_wall_post("Checkout my new cool app!", {}, "someoneelse's id")			
-		else
-			'<a href="/login">Login</a>'
 		end
+		@messages = Message.find(:all, :order => "id DESC", :limit => 20)
+		erb :index
 	end
+
+  get '/update' do
+    @messages = Message.where(["id > ?", params[:last_id]])
+    puts @messages.inspect
+    erb :_messages, :layout => false, :locals => {:messages => @messages}
+  end
 
 	get '/login' do
 		# generate a new oauth object with your app data and your callback url

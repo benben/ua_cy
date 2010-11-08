@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de"> 
+  <head> 
+    <title>utopiaattraktor.org</title> 
+      <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+      <script type="text/javascript" src="prototype.js"></script>
+      <script type="text/javascript" src="stream.js"></script>
+  </head> 
+  <body>
+    <video 
+    src="http://85.25.67.150:8090/test.flv"
+    height="288"
+    id="container"
+    width="512"> 
+    </video> 
+    <script type="text/javascript"> 
+      jwplayer("container").setup({
+        autostart: false,
+        height: 288,
+        width: 512,
+        players: [
+          { type: "flash", src: "/jwplayer/player.swf" },
+          { type: "html5" }
+        ],
+        streamer:'http://85.25.67.150:8090/test.flv'
+      });
+    </script>
+    <div id="messages" style="border:1px dotted black;">
+      <%= erb :_messages, :layout => false, :locals => {:messages => @messages} %>
+    </div>
+  </body> 
+</html> 

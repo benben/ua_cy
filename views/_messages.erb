@@ -1,0 +1,7 @@
+<% @messages.each do |message| %>
+  <div id="<%= message.id %>">
+    <p>id: <%= message.id %> | message_id: <%= message.message_id %> @ <%= message.time %></p>
+    <h2><%= message.text %></h2>
+    <p>from <%= message.user_name %> (<%= message.user_id %>) via <%= message.via %></p>
+  </div>
+<% end %>
