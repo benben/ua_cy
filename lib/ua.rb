@@ -22,10 +22,6 @@ class Ua < Sinatra::Application
 			puts e
 		end
 	end
-  
-  helpers do
-
-  end
 
 	get '/' do
 		if session['access_token']
