@@ -67,7 +67,14 @@ class Ua < Sinatra::Application
 	  else
 	    '<a href="http://www.facebook.com/profile.php?id=' + m.user_id + '">' + m.user_name + '</a>'
 	  end
-	  
+	end
+	
+	def make_time (m)
+	  if m.via == "twitter"
+	    "<a href=\"http://twitter.com/#{m.user_id}/status/#{m.message_id}\">" + Time.at(m.time).strftime("%d.%m.%Y %H:%M:%S") + "</a>"
+	  else
+	    "<a href=\"http://www.facebook.com/permalink.php?story_fbid=#{m.message_id.split('_')[1]}&id=#{m.user_id}\">" + Time.at(m.time).strftime("%d.%m.%Y %H:%M:%S") + "</a>"
+	  end
 	end
 end
 

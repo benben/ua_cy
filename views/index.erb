@@ -5,6 +5,19 @@
       <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
       <script type="text/javascript" src="prototype.js"></script>
       <script type="text/javascript" src="stream.js"></script>
+      <script type="text/javascript"> 
+        /* <![CDATA[ */
+        (function() {
+          var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+          
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'http://api.flattr.com/js/0.5.0/load.js?mode=auto&uid=benben&language=de_DE&category=video&button=compact';
+          
+          t.parentNode.insertBefore(s, t);
+        })();
+        /* ]]> */
+        </script> 
       <link href="main.css" media="screen" rel="stylesheet" type="text/css" />
       <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin' rel='stylesheet' type='text/css'>
   </head> 
@@ -12,6 +25,29 @@
     <div id="page">
       <img style="margin:10px;" src="head.png" alt="utopiaattraktor.org"/>
       <div id="right">
+        <div style="float:left;width:140px;">
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.utopiaattraktor.org&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;font=verdana&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+        </div>
+        <div style="float:left;width:150px;">
+          <a class="FlattrButton" href="http://www.utopiaattraktor.org/" title="UTOPIA ATTRAKTOR 2011" lang="German">
+          Im Frühjahr 2011 startet UTOPIA ATTRAKTOR - ein städte- und länderübergreifendes Netzwerk- und Kommunikationsformat -
+          Weimar ** Dresden ** Halle/Saale ** Leipzig -
+          Mischt Euch ein! Führt Utopisches zusammen! Arbeitet gemeinsam! Vernetzt Euch!
+          ** Vorkongress ** Ausstellungen ** Workshops ** SIMULATOREN Summer School ** Hauptkongress **
+          Gibt es Neuigkeiten, Fantastische Ideen, Visionen und vermeintliche Utopien in unserer zunehmend
+          differenzierten Welt, die es wert sind verkündet zu werden?
+          Welchen Einfluss haben sich neu entfaltende Perspektiven und Zukunftsszenarien auf unser Denken heute?
+          Reicht es aus den Blick nach vorn zu richten und darauf zu drängen, dass wir durch positives Denken
+          neue Wege finden, um die alten Probleme zu lösen? Wir setzen es uns zum Ziel, das Zusammenspiel
+          zwischen globalem Denken und lokalem Handeln neu zu denken. Wir weichen ab von der Behauptung
+          Buckminster Fullers, der mit seinem Ausspruch „think global, act local“ wegweisend war,
+          hin zu einer Kultur des gleichzeitigen globalen und lokalen Denkens und Handelns.
+          </a>
+        </div>
+        <div style="float:left;width:140px;">
+          <a href="http://twitter.com/share" class="twitter-share-button" data-text="Join the Utopia Attraktor NOW!" data-count="horizontal" data-via="utopiaattraktor" data-lang="de">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        </div>
+        <div style="padding-top: 40px;">
         <video 
         src="http://85.25.67.150:8090/test.flv"
         height="288"
@@ -24,6 +60,8 @@
             autostart: false,
             height: 288,
             width: 512,
+            image: 'http://85.25.67.150/stream.jpg',
+            dock: true,
             players: [
               { type: "flash", src: "/jwplayer/player.swf" },
               { type: "html5" }
@@ -31,6 +69,7 @@
             streamer:'http://85.25.67.150:8090/test.flv'
           });
         </script>
+        </div>
         <h1>1. Post here</h1>
         <form>
           <textarea style="border:1px solid white;background-color:black;width:100%;height:100px;color:#ff9900;"></textarea>
@@ -43,7 +82,7 @@
         <h1>Info</h1>
         <p>Im Frühjahr 2011 startet
            UTOPIA ATTRAKTOR<br/>
-           - ein städte- und länderübergreifendes Netzwerk- und Kommunikationsformat -<br /><br />
+           ein städte- und länderübergreifendes Netzwerk- und Kommunikationsformat<br /><br />
            Weimar ** Dresden ** Halle/Saale ** Leipzig<br /><br />
           Mischt Euch ein!<br />
           Führt Utopisches zusammen!<br />
