@@ -1,6 +1,6 @@
 document.observe('dom:loaded', function() {
   var pu = new Ajax.PeriodicalUpdater('messages', '/update', {
-    frequency: 2,
+    frequency: 5,
     method: 'get',
     parameters: { last_id: $('messages').firstDescendant().identify() },
     insertion: 'top'

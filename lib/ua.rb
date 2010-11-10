@@ -8,14 +8,9 @@ class Ua < Sinatra::Application
 	enable :sessions
 
 	configure do
-		begin
-			c = YAML.load_file('auth.yml')
-			set :app_id, c["app_id"]
-			set :app_code, c["app_code"]
-			set :site_url, (c["site_url"] + 'callback')
-		rescue Exception => e
-			puts e
-		end
+	  set :app_id, C["app_id"]
+    set :app_code, C["app_code"]
+    set :site_url, (C["site_url"] + 'callback')
 	end
 
 	get '/' do
@@ -28,12 +23,13 @@ class Ua < Sinatra::Application
 			# or publish to someone else (if you have the permissions too ;) )
 			# @graph.put_wall_post("Checkout my new cool app!", {}, "someoneelse's id")			
 		end
-		@messages = Message.find(:all, :order => "id DESC", :limit => 20)
+		@messages = Message.find(:all, :order => "time DESC", :limit => 20)
 		erb :index
 	end
 
   get '/update' do
-    @messages = Message.where(["id > ?", params[:last_id]]).order("id DESC")
+    last = Message.find(params[:last_id])
+    @messages = Message.where(["time >= ? and id != ?", last.time, last.id]).order("time DESC")
     erb :_messages, :layout => false, :locals => {:messages => @messages}
   end
 
@@ -56,10 +52,22 @@ class Ua < Sinatra::Application
 		redirect '/'
 	end
 	
-	def urlconv (status)
-    s = status.gsub( Regexp.new('((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'), '<a href="\1">\1</a>' )    
-    s = s.gsub( Regexp.new('(@([_a-zA-Z0-9\-]+))'), '<a href="http://twitter.com/\2" title="\2 on Twitter">\1</a>' )
-    s = s.gsub( Regexp.new('(#([_a-zA-Z0-9\-]+))'), '<a href="http://search.twitter.com/search?q=%23\2" title="Search for \1 on Twitter">\1</a>' )
+	def urlconv (m)
+    s = m.text.gsub( Regexp.new('((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'), '<a href="\1">\1</a>' )    
+    if m.via == "twitter"
+      s = s.gsub( Regexp.new('(@([_a-zA-Z0-9\-]+))'), '<a href="http://twitter.com/\2" title="\2 on Twitter">\1</a>' )
+      s = s.gsub( Regexp.new('(#([_a-zA-Z0-9\-]+))'), '<a href="http://search.twitter.com/search?q=%23\2" title="Search for \1 on Twitter">\1</a>' )
+    end
+    s
+	end
+	
+	def make_name (m)
+	  if m.via == "twitter"
+	    '<a href="http://twitter.com/' + m.user_id + '">' + m.user_name + '</a>'
+	  else
+	    '<a href="http://www.facebook.com/profile.php?id=' + m.user_id + '">' + m.user_name + '</a>'
+	  end
+	  
 	end
 end
 
