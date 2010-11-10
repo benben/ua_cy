@@ -25,6 +25,7 @@ GEM
     json (1.4.6)
     koala (0.9.1)
       json
+    mysql (2.8.1)
     rack (1.2.1)
     roauth (0.0.3)
     sinatra (1.1.0)
@@ -45,6 +46,7 @@ DEPENDENCIES
   activerecord (~> 3.0.0)
   bitly
   koala (~> 0.9.1)
+  mysql (~> 2.8.1)
   sinatra (~> 1.1.0)
   sqlite3-ruby
   twitter-stream

@@ -15,7 +15,7 @@ rescue Exception => e
   exit
 end
 
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => APP_ROOT + '/db.sqlite')
+ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
 #deactivate in production 
 ActiveRecord::Base.logger = Logger.new(File.open(APP_ROOT + '/database.log', 'a'))
  

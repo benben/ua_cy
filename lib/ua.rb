@@ -15,6 +15,8 @@ class Ua < Sinatra::Application
 
 	get '/' do
 		if session['access_token']
+		@graph = Koala::Facebook::GraphAPI.new(session["access_token"])
+		@profile = @graph.get_object("me")
 			# do some stuff with facebook here
 			# for example:
 			# @graph = Koala::Facebook::GraphAPI.new(session["access_token"])
@@ -28,9 +30,13 @@ class Ua < Sinatra::Application
 	end
 
   get '/update' do
-    last = Message.find(params[:last_id])
-    @messages = Message.where(["time >= ? and id != ?", last.time, last.id]).order("time DESC")
-    erb :_messages, :layout => false, :locals => {:messages => @messages}
+		begin
+			last = Message.find(params[:last_id])
+    	@messages = Message.where(["time >= ? and id != ?", last.time, last.id]).order("time DESC")
+    	erb :_messages, :layout => false, :locals => {:messages => @messages}
+		rescue
+			''
+		end
   end
 
 	get '/login' do
@@ -56,7 +62,17 @@ class Ua < Sinatra::Application
 		unless params[:message].empty?
 			if session['access_token']
 				@graph = Koala::Facebook::GraphAPI.new(session["access_token"])
-				if @graph.put_wall_post(params[:message], {}, "utopiaattraktor")
+				@profile = @graph.get_object("me")
+				id = @graph.put_wall_post(params[:message] + " - sent from http://www.utopiaattraktor.org/")['id']
+					  m = {
+	    			:message_id => id,
+	    			:time => Time.now.strftime('%s'),
+      			:text => params[:message],
+      			:user_id => @profile['id'],
+      			:user_name => @profile['name'],
+      			:via => 'utopiaattraktor'
+    				}
+				if Message.create(m)
 					'Deine Nachricht wurde an den Attraktor gesendet!'
 				else
 					'Fehler!'	

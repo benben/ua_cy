@@ -6,4 +6,5 @@ thin.pid
 database.log
 db.sqlite
 .bundle/
+database.yml
 
