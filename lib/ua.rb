@@ -37,7 +37,7 @@ class Ua < Sinatra::Application
 		# generate a new oauth object with your app data and your callback url
 		session['oauth'] = Facebook::OAuth.new(options.app_id, options.app_code, options.site_url)
 		# redirect to facebook to get your code
-		redirect session['oauth'].url_for_oauth_code()
+		redirect session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
 	end
 
 	get '/logout' do
@@ -50,6 +50,21 @@ class Ua < Sinatra::Application
 		#get the access token from facebook
 		session['access_token'] = session['oauth'].get_access_token(params[:code])
 		redirect '/'
+	end
+
+	get '/send' do
+		unless params[:message].empty?
+			if session['access_token']
+				@graph = Koala::Facebook::GraphAPI.new(session["access_token"])
+				if @graph.put_wall_post(params[:message], {}, "utopiaattraktor")
+					'Deine Nachricht wurde an den Attraktor gesendet!'
+				else
+					'Fehler!'	
+				end
+			end
+		else
+			'Bitte fülle das Textfeld aus!'
+		end
 	end
 	
 	def urlconv (m)
