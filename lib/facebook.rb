@@ -25,9 +25,21 @@ EventMachine::run do
       #puts post['created_time']
       #puts post['source'] if post['type'] == 'video' unless post['type'].nil?
       #puts "################################################################################"
+      
+      #only process the post if its created time younger then the last post processed and if it has another id
       if DateTime.parse(post['created_time']).strftime('%s').to_i >= last_time and post['id'] != last_id
+        #only process if the post has a link field
         unless post['link'].nil?
+          #delete the link from the message if its occur there
           post['message'].gsub!(post['link'], "") if post['message'].include? post['link']
+          #strip the http:// and the trailing /
+          l = post['link'].gsub("http://","")
+          l = l.chop if l[-1] == 47
+          #delete this if this occurs in the message
+          if post['message'].include? l
+            post['message'].gsub!(l, "")
+          end
+          
           link = post['link']
         else
           unless post['type'].nil?
