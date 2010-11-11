@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de"> 
+  <head> 
+    <title>! ! ! U T O P I A A T T R A K T O R . O R G ! ! ! @ Cynetart 13. / 14. 11. 2011</title>
+      <script type="text/javascript" src="prototype.js"></script>
+			<script type="text/javascript" src="stream.js"></script>
+      <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin' rel='stylesheet' type='text/css'>
+			<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+			<style type="text/css">
+* {
+margin: 0px;
+padding: 0px;
+border:0px;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  font-family: 'Droid Sans Mono', sans-serif;
+}
+
+h1 {
+  color: #ff9900;
+  margin:20px 0px 10px 0px;
+}
+
+h2 {
+	font-weight: normal;
+}
+
+a {
+  color: #ff9900;
+}
+			</style>
+  </head> 
+  <body>
+    <div id="page" style="width: 900px;margin: 0px 50px;max-height:765px;overflow:hidden;">
+		<img style="margin:10px;" src="head.png" alt="utopiaattraktor.org"/>
+			  <div id="messages">
+          <%= erb :_messages, :layout => false, :locals => {:messages => @messages} %>
+        </div>
+    </div>
+  </body> 
+</html> 

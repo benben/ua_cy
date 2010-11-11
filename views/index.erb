@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de"> 
   <head> 
-    <title>utopiaattraktor.org</title> 
+    <title>! ! ! U T O P I A A T T R A K T O R . O R G ! ! ! @ Cynetart 13. / 14. 11. 2011</title>
       <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
       <script type="text/javascript" src="prototype.js"></script>
       <script type="text/javascript" src="stream.js"></script>
@@ -21,15 +21,16 @@
         </script> 
       <link href="main.css" media="screen" rel="stylesheet" type="text/css" />
       <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin' rel='stylesheet' type='text/css'>
+			<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   </head> 
   <body>
     <div id="page">
       <img style="margin:10px;" src="head.png" alt="utopiaattraktor.org"/>
       <div id="right">
-        <div style="float:left;width:160px;">
-        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.utopiaattraktor.org&amp;layout=button_count&amp;show_faces=true&amp;width=140&amp;action=like&amp;font=verdana&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:140px; height:21px;" allowTransparency="true"></iframe>
+        <div style="float: left; width: 115px; text-align: center;padding-left:45px;">
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.facebook.com/utopiaattraktor" layout="button_count" width="150"></fb:like>
         </div>
-        <div style="float:left;width:170px;">
+        <div style="float:left;width:170px;text-align:center;">
           <a class="FlattrButton" href="http://www.utopiaattraktor.org/" title="UTOPIA ATTRAKTOR 2011" lang="German">
           Im Frühjahr 2011 startet UTOPIA ATTRAKTOR - ein städte- und länderübergreifendes Netzwerk- und Kommunikationsformat -
           Weimar ** Dresden ** Halle/Saale ** Leipzig -
@@ -45,14 +46,14 @@
           hin zu einer Kultur des gleichzeitigen globalen und lokalen Denkens und Handelns.
           </a>
         </div>
-        <div style="float:left;width:160px;">
+        <div style="float:left;width:170px;text-align:center;">
           <a href="http://twitter.com/share" class="twitter-share-button" data-text="Join the Utopia Attraktor NOW!" data-count="horizontal" data-via="utopiaattraktor" data-lang="de">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
         </div>
-        <div style="padding-top: 40px;">
+        <div style="padding-top: 55px;">
         <video 
-        src="http://85.25.67.150:8090/test.flv"
+        src="http://85.25.67.150:8090/stream.flv"
         height="288"
-        poster="stream.png"
+        poster="stream1.jpg"
         id="container"
         width="512"> 
         </video> 
@@ -61,32 +62,28 @@
             autostart: false,
             height: 288,
             width: 512,
-            image: 'http://85.25.67.150/stream.jpg',
+            image: 'http://85.25.67.150/stream1.jpg',
             dock: true,
             players: [
               { type: "flash", src: "/jwplayer/player.swf" },
               { type: "html5" }
             ],
-            streamer:'http://85.25.67.150:8090/test.flv'
+            streamer:'http://85.25.67.150:8090/stream.flv'
           });
         </script>
         </div>
-        <h1>1. Post here</h1>
-				<% if session['access_token'] %>
-				<p>Logged in as <%= @profile['name'] %> [<a href="/logout">Logout</a>]</p>
-<div id="notice"></div>
-        <form id="sender">
-          <textarea id="message" name="message" style="border:1px solid white;background-color:black;width:100%;height:100px;color:#ff9900;"></textarea>
-				</form>
-        <a style="display: block; border: 0px none; background-color: #DDD; font-family: 'Droid Sans Mono',sans-serif; font-weight: bold; color: black; text-decoration: none; text-align: center; font-size: 14px; padding: 10px; width: 100px;" id="submit" >Senden</a>
-				<% else %>
-				<a href="/login"><img src="login.png" alt="Login with Facebook" /></a>
-				<% end %>
-				
-        <h1>2. Twitter</h1>
-        <p>Twitter with #ua2011 or @utopiaattraktor</p>
-        <h1>3. Facebook</h1>
-        <p>Post to the Utopia Attraktor Site</p>
+        <h1>Mach mit!</h1>
+				<h2>Schaue dir den Stream an und misch dich ein!</h2>
+				<h2>Deine Nachrichten erscheinen auf einer Projektionsfläche
+				auf der <a href="http://www.cynetart.de/">Cynetart</a> in Dresden und werden auf dieser Seite veröffentlicht.<br /><br /></h2>
+				<h2>1. Schreibe eine Nachricht</h2>
+				<p>Logge dich auf dieser Seite per Facebook ein und sende deine Nachricht an den Attraktor.<br /><br /></p>
+        <h2>2. Nutze Twitter</h2>
+        <p>Schreibe eine Nachricht auf <a href="http://www.twitter.com/">Twitter</a> und verwende den Hashtag #ua2011
+				oder schreibe einen Tweet an Utopia Attraktor (@utopiaattraktor).<br /><br /></p>
+        <h2>3. Nutze Facebook</h2>
+        <p>Geh auf die <a href="http://www.facebook.com/utopiaattraktor">Utopia Attraktor Facebook Seite</a> und schreibe
+				schreibe dort etwas auf die Pinnwand.<br /><br /></p>
         <h1>Info</h1>
         <p>Im Frühjahr 2011 startet
            UTOPIA ATTRAKTOR<br/>
@@ -132,11 +129,27 @@
           Projekte, Konzepte und Ideen informieren und selber präsentieren.<br /><br />
           Wenn Ihr Interesse habt als Einzelperson oder Gruppe teilzunehmen, dann
           meldet Euch bitte hiermit an.<br /><br />
-          www.utopiaattraktor.org<br />
-          www.facebook.com/utopiaattraktor</p>
-      </div>
+          <a href="http://www.utopiaattraktor.org">http://www.utopiaattraktor.org</a><br />
+          <a href="http://www.facebook.com/utopiaattraktor">http://www.facebook.com/utopiaattraktor</a><br /><br /></p>
+<p><img src="attrakt.jpg" alt="utopiaattraktor" /><br /><br />
+<object width="512" height="288"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=15401991&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00ADEF&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=15401991&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00ADEF&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="512" height="288"></embed></object>
+      </p></div>
       <div id="left">
-        <div id="messages" style="border:1px dotted black;">
+<div style="margin: 55px 0px 30px 0px;">
+<% if session['access_token'] %>
+				<p>Logged in as <%= @profile['name'] %> [<a href="/logout">Logout</a>]</p>
+<div id="notice"></div>
+        <form id="sender">
+          <textarea id="message" name="message" style="border:1px solid white;background-color:black;width:100%;height:100px;color:#ff9900;"></textarea>
+				</form>
+        <a style="display: block; border: 0px none; background-color: #DDD; font-family: 'Droid Sans Mono',sans-serif; font-weight: bold; color: black; text-decoration: none; text-align: center; font-size: 14px; padding: 10px; width: 100px;" id="submit" >Senden</a>				
+<% else %>
+				
+				<p><a href="/login"><img alt="Login with Facebook" src="login.png"></a> um etwas zu schreiben!</p>
+				
+				<% end %>
+</div>
+        <div id="messages">
           <%= erb :_messages, :layout => false, :locals => {:messages => @messages} %>
         </div>
       </div>

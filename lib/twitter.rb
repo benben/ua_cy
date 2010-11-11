@@ -3,9 +3,9 @@ require 'lib/env'
 EventMachine::run {
   stream = Twitter::JSONStream.connect(
 		#production:
-    #:path    => '/1/statuses/filter.json?track=utopiaattraktor,%23ua2011',
+    :path    => '/1/statuses/filter.json?track=utopiaattraktor,%23ua2011',
 		#for testing:
-		:path    => '/1/statuses/filter.json?track=sport',
+		#:path    => '/1/statuses/filter.json?track=sport',
     :auth    => C['twitter_user'] + ':' + C['twitter_pass']
   )
 

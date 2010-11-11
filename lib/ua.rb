@@ -82,6 +82,17 @@ class Ua < Sinatra::Application
 			'Bitte fülle das Textfeld aus!'
 		end
 	end
+
+	get '/display' do
+		if session['access_token']
+			erb :display
+		end
+	end
+
+	get '/wall' do
+		@messages = Message.find(:all, :order => "time DESC", :limit => 20)
+		erb :wall
+	end
 	
 	def urlconv (m)
     s = m.text.gsub( Regexp.new('((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'), '<a href="\1">\1</a>' )    

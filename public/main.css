@@ -16,6 +16,10 @@ h1 {
   margin:20px 0px 10px 0px;
 }
 
+h2 {
+	font-weight: normal;
+}
+
 a {
   color: #ff9900;
 }
