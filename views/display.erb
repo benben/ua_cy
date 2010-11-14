@@ -3,7 +3,39 @@
   <head> 
     <title>! ! ! U T O P I A A T T R A K T O R . O R G ! ! ! @ Cynetart 13. / 14. 11. 2011</title>
       <script type="text/javascript" src="prototype.js"></script>
-			<script type="text/javascript" src="interface.js"></script>
+			<script type="text/javascript">
+document.observe('dom:loaded', function() {
+
+$('submit').observe('click', function(event) {
+	new Ajax.Updater('notice', '/display_send', {
+		method: 'get',
+		parameters: $('sender').serialize(true)
+		});
+	$('message').clear();
+})
+
+new Form.Element.Observer(
+  'message',
+  0.2,  // 200 milliseconds
+  function(el, value){
+    if (value.length > 0) {
+			$('submit').writeAttribute('href', '#');
+			$('submit').setStyle({
+				backgroundColor: '#FF9900'
+			});
+
+		} else {
+			$('submit').removeAttribute('href');
+			$('submit').setStyle({
+				backgroundColor: '#999'
+			});
+		}
+  }
+)
+
+});
+
+</script>
       <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin' rel='stylesheet' type='text/css'>
 			<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 			<style type="text/css">
@@ -39,7 +71,7 @@ a {
         <h1>Mach mit!</h1>
 				<h2>Schaue zu und misch dich ein!</h2>
 				<h2>Deine Nachrichten erscheinen auf der Projektionsfläche des Workshops
-				und werden auf dieser Seite veröffentlicht.<br /><br /></h2>
+				und werden auf http://www.utopiaattraktor.org/ veröffentlicht.<br /><br /></h2>
 				<h2>1. Schreibe eine Nachricht</h2>
 				<p>Benutze das Textfeld unten und sende deine Nachricht an den Attraktor.<br /><br /></p>
         <h2>2. Nutze dein Telefon</h2>

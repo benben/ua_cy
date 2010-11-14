@@ -12,7 +12,7 @@ EventMachine::run {
 	def object_parsed(obj)
 	  m = {
 	    :message_id => obj[:new_id_str],
-	    :time => DateTime.parse(obj[:created_at]).strftime('%s'),
+	    :time => Time.now.strftime('%s'),
       :text => obj[:text],
       :user_id => obj[:user][:screen_name],
       :user_name => obj[:user][:name],

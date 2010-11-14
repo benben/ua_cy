@@ -15,8 +15,12 @@ class Ua < Sinatra::Application
 
 	get '/' do
 		if session['access_token']
-		@graph = Koala::Facebook::GraphAPI.new(session["access_token"])
-		@profile = @graph.get_object("me")
+			begin
+				@graph = Koala::Facebook::GraphAPI.new(session["access_token"])
+				@profile = @graph.get_object("me")
+			rescue
+				redirect '/logout'
+			end
 			# do some stuff with facebook here
 			# for example:
 			# @graph = Koala::Facebook::GraphAPI.new(session["access_token"])
@@ -35,7 +39,8 @@ class Ua < Sinatra::Application
     	@messages = Message.where(["time >= ? and id != ?", last.time, last.id]).order("time DESC")
     	erb :_messages, :layout => false, :locals => {:messages => @messages}
 		rescue
-			''
+			@messages = Message.find(:all, :order => "time DESC", :limit => 1)
+    	erb :_messages, :layout => false, :locals => {:messages => @messages}
 		end
   end
 
@@ -84,14 +89,41 @@ class Ua < Sinatra::Application
 	end
 
 	get '/display' do
-		if session['access_token']
 			erb :display
-		end
+	end
+	
+	get '/display_send' do
+		unless params[:message].empty?
+					  m = {
+	    			:message_id => "ua",
+	    			:time => Time.now.strftime('%s'),
+      			:text => params[:message],
+      			:user_id => "100001671288845",
+      			:user_name => "Cynetart Visitor",
+      			:via => 'utopiaattraktor'
+    				}
+				if Message.create(m)
+					'Deine Nachricht wurde an den Attraktor gesendet!'
+				else
+					'Fehler!'	
+				end
+		else
+			'Bitte fülle das Textfeld aus!'
+		end		
 	end
 
 	get '/wall' do
 		@messages = Message.find(:all, :order => "time DESC", :limit => 20)
 		erb :wall
+	end
+
+	get '/newsletter' do
+		unless params[:mail].empty?
+			puts "Newsletter: " +  params[:mail]
+			'Deine Adresse wurde eingetragen.'
+		else
+			'Bitte fülle das Feld aus!'
+		end
 	end
 	
 	def urlconv (m)

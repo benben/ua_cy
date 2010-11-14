@@ -57,7 +57,7 @@ EventMachine::run do
         
         m = {
           :message_id => post['id'],
-          :time => DateTime.parse(post['created_time']).strftime('%s'),
+          :time => Time.now.strftime('%s'),
           :text => post['message'] + link,
           :user_id => post['from']['id'],
           :user_name => post['from']['name'],
