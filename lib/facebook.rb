@@ -1,11 +1,11 @@
-require 'lib/env'
+require File.expand_path(File.dirname(__FILE__)) + 'lib/env'
 
 @graph = Koala::Facebook::GraphAPI.new
 @user = @graph.get_object("utopiaattraktor")
 @bitly = Bitly.new(C['bitly_user'], C['bitly_api_key'])
 
-EventMachine::run do
-  timer = EventMachine::PeriodicTimer.new(5) do
+#EventMachine::run do
+#  timer = EventMachine::PeriodicTimer.new(5) do
     
     feed = @graph.get_connections(@user["id"], "feed")
     
@@ -57,7 +57,7 @@ EventMachine::run do
         
         m = {
           :message_id => post['id'],
-          :time => Time.now.strftime('%s'),
+          :time => post['time'].strftime('%s'),
           :text => post['message'] + link,
           :user_id => post['from']['id'],
           :user_name => post['from']['name'],
@@ -70,7 +70,7 @@ EventMachine::run do
         end
       end
     end
-  end
-  trap("SIGINT") { exit! }
-end
+#  end
+#  trap("SIGINT") { exit! }
+#end
  

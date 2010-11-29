@@ -8,3 +8,4 @@ db.sqlite
 .bundle/
 database.yml
 
+development.sqlite3
