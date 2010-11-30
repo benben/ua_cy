@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__)) + 'lib/env'
+require File.dirname(__FILE__) + '/env'
 
 @graph = Koala::Facebook::GraphAPI.new
 @user = @graph.get_object("utopiaattraktor")
@@ -57,7 +57,7 @@ require File.expand_path(File.dirname(__FILE__)) + 'lib/env'
         
         m = {
           :message_id => post['id'],
-          :time => post['time'].strftime('%s'),
+          :time => DateTime.parse(post['created_time']).strftime('%s'),
           :text => post['message'] + link,
           :user_id => post['from']['id'],
           :user_name => post['from']['name'],
@@ -65,8 +65,7 @@ require File.expand_path(File.dirname(__FILE__)) + 'lib/env'
         }
         
         if Message.create(m)
-          puts m.inspect
-          puts
+          #puts "ua_cy facebook message inserted"
         end
       end
     end

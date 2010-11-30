@@ -1,7 +1,7 @@
 APP_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 
 require "rubygems"
-require "bundler/setup"
+require "bundler"
 Bundler.require(:default)
 
 Bitly.use_api_version_3
@@ -15,7 +15,7 @@ rescue Exception => e
   exit
 end
 
-ActiveRecord::Base.establish_connection(YAML::load(File.open('database.yml')))
+ActiveRecord::Base.establish_connection(YAML.load_file(APP_ROOT + '/database.yml'))
 #deactivate in production 
 ActiveRecord::Base.logger = Logger.new(File.open(APP_ROOT + '/database.log', 'a'))
  
